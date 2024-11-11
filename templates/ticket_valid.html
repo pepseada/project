@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تذكرة صالحة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            text-align: center;
+            direction: rtl;
+        }
+        .card {
+            background: linear-gradient(135deg, #4f46e5, #6d28d9);
+            color: #fff;
+            width: 300px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .card h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .card p {
+            font-size: 1.25rem;
+            margin: 5px 0;
+        }
+        .ticket-code {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #4f46e5;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #e0e7ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>التذكرة صالحة</h1>
+        <p>رقم التذكرة:</p>
+        <div class="ticket-code">{{ ticket.ticket_code }}</div>
+        <p>عدد المحاولات المسموح بها: {{ allowed_attempts }}</p>
+        <p>المحاولات المتبقية: {{ remaining_attempts }}</p>
+        <div class="actions">
+            <form action="{% url 'use-ticket' ticket.ticket_code %}" method="post">
+                {% csrf_token %}
+                <button type="submit">استخدم التذكرة</button>
+            </form>
+            <form action="{% url 'check-ticket' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">تحقق</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

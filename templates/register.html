@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+        }
+        .form-container {
+            background: #ffffff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column; /* جعل العناصر في شكل عمودي */
+            align-items: stretch; /* جعل العناصر تأخذ العرض الكامل */
+        }
+        form p {
+            text-align: left;
+        }
+        input {
+            padding: 10px;
+            margin: 5px 0; /* إضافة مسافة بين الحقول */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%; /* جعل مربعات الإدخال تأخذ العرض الكامل */
+            box-sizing: border-box; /* جعل الحشو والحواف تُحسب ضمن العرض */
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px; /* إضافة مسافة فوق الزر */
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Register</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
+</body>
+</html>

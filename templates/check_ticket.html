@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التحقق من التذكرة</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label, input[type="text"] {
+            font-size: 1rem;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #ffffff;
+            background-color: #4f46e5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>التحقق من التذكرة</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="ticket_code">أدخل كود التذكرة:</label>
+                <input type="text" id="ticket_code" name="ticket_code" required>
+            </div>
+            <button type="submit" class="btn">تحقق</button>
+        </form>
+    </div>
+</body>
+</html>
